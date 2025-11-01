@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiggles Shapes Fun 🟡💙</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background: linear-gradient(135deg, #fffacd, #a0e7e5); /* yellow & teal vibe */
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    color: #ff6f61;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px #00bfff;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 120px); /* 5 shapes per row */
+    grid-auto-rows: 140px; /* space for shape + name */
+    gap: 40px 20px; /* 40px row gap, 20px column gap */
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .shape {
+    width: 100px;
+    height: 100px;
+    background-color: #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 15px;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .shape:hover {
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 4px 8px 15px rgba(0,0,0,0.3);
+  }
+
+  .shape-name {
+    margin-top: 15px;
+    font-size: 1.3em;
+    color: #008080;
+    font-weight: bold;
+    min-height: 28px;
+  }
+
+  /* Shapes */
+  .circle { border-radius: 50%; }
+  .square { }
+  .triangle {
+    width: 0; height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid #ffd700;
+    background: none;
+  }
+  .rectangle { width: 120px; height: 70px; }
+  .star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 
+                       68% 57%, 79% 91%, 50% 70%, 
+                       21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+  .heart {
+    position: relative;
+    background: #ffd700;
+    transform: rotate(-45deg);
+  }
+  .heart::before, .heart::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ffd700;
+  }
+  .heart::before { top: -50px; left: 0; }
+  .heart::after { top: 0; left: 50px; }
+
+  .oval { width: 120px; height: 70px; border-radius: 50%; }
+  .diamond { transform: rotate(45deg); }
+  .pentagon {
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 
+                       18% 100%, 0% 38%);
+  }
+  .hexagon {
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 
+                       75% 95%, 25% 95%, 0% 50%);
+  }
+</style>
+</head>
+<body>
+
+<h1>🎵 Wiggles Learn Shapes! 🟡💙</h1>
+
+<div class="grid">
+  <div class="shape circle" data-shape="Circle"></div>
+  <div class="shape square" data-shape="Square"></div>
+  <div class="shape triangle" data-shape="Triangle"></div>
+  <div class="shape rectangle" data-shape="Rectangle"></div>
+  <div class="shape star" data-shape="Star"></div>
+
+  <div class="shape heart" data-shape="Heart"></div>
+  <div class="shape oval" data-shape="Oval"></div>
+  <div class="shape diamond" data-shape="Diamond"></div>
+  <div class="shape pentagon" data-shape="Pentagon"></div>
+  <div class="shape hexagon" data-shape="Hexagon"></div>
+</div>
+
+<div id="shapeName" class="shape-name"></div>
+
+<audio id="sound" preload="auto"></audio>
+
+<script>
+  const shapeColors = {
+    Circle: '#ffb6b9',
+    Square: '#fdfd96',
+    Triangle: '#a0e7e5',
+    Rectangle: '#ffd6a5',
+    Star: '#f9f871',
+    Heart: '#ff9aa2',
+    Oval: '#caffbf',
+    Diamond: '#b5ead7',
+    Pentagon: '#ffdac1',
+    Hexagon: '#bae1ff'
+  };
+
+  const sounds = {
+    Circle: 'sounds/circle.mp3',
+    Square: 'sounds/square.mp3',
+    Triangle: 'sounds/triangle.mp3',
+    Rectangle: 'sounds/rectangle.mp3',
+    Star: 'sounds/star.mp3',
+    Heart: 'sounds/heart.mp3',
+    Oval: 'sounds/oval.mp3',
+    Diamond: 'sounds/diamond.mp3',
+    Pentagon: 'sounds/pentagon.mp3',
+    Hexagon: 'sounds/hexagon.mp3'
+  };
+
+  const shapes = document.querySelectorAll('.shape');
+  const nameDisplay = document.getElementById('shapeName');
+  const audio = document.getElementById('sound');
+
+  shapes.forEach(shape => {
+    shape.addEventListener('click', () => {
+      const shapeName = shape.getAttribute('data-shape');
+      nameDisplay.textContent = shapeName;
+      shape.style.backgroundColor = shapeColors[shapeName];
+
+      audio.src = sounds[shapeName];
+      audio.play().catch(() => {});
+    });
+  });
+</script>
+</body>
+</html>

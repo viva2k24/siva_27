@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather & Seasons 🌦️</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background: linear-gradient(135deg, #FFF7CC, #A8E6CF);
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+  }
+
+  h1 {
+    color: #FFB400;
+    font-size: 2.8em;
+    text-shadow: 2px 2px #fff;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2em;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    width: 180px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+    background: #FFF3B0;
+  }
+
+  .emoji {
+    font-size: 3.5em;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .card h3 {
+    color: #00796B;
+    font-size: 1.3em;
+    margin: 0;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .bounce {
+    animation: bounce 0.6s ease;
+  }
+
+  /* background music button */
+  #music-btn {
+    background: #FFB400;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+  }
+
+  #music-btn:hover {
+    background: #FF9100;
+  }
+</style>
+</head>
+<body>
+
+<h1>🌦️ Weather & Seasons 🎵</h1>
+<p>Click the cards to hear and see the magic of nature!</p>
+
+<button id="music-btn">🎶 Play Background Music</button>
+
+<!-- Row 1 -->
+<div class="row">
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2023/02/27/audio_37ab979b67.mp3?filename=birds-chirping-24292.mp3">
+    <span class="emoji">☀️</span>
+    <h3>Sunny</h3>
+  </div>
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d6b4d4df72.mp3?filename=rain-ambient-110777.mp3">
+    <span class="emoji">🌧️</span>
+    <h3>Rainy</h3>
+  </div>
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2022/03/09/audio_191be7ac70.mp3?filename=thunderstorm-ambient-110253.mp3">
+    <span class="emoji">⛈️</span>
+    <h3>Stormy</h3>
+  </div>
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2022/02/23/audio_aa64c33934.mp3?filename=wind-blowing-ambient-ambient-sound-110043.mp3">
+    <span class="emoji">💨</span>
+    <h3>Windy</h3>
+  </div>
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2022/03/14/audio_39006a9c90.mp3?filename=snow-110678.mp3">
+    <span class="emoji">❄️</span>
+    <h3>Snowy</h3>
+  </div>
+</div>
+
+<!-- Row 2 -->
+<div class="row">
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c415353c6b.mp3?filename=forest-birds-nature-sound-ambience-7032.mp3">
+    <span class="emoji">🌸</span>
+    <h3>Spring</h3>
+  </div>
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2021/09/07/audio_6c7e2d92fa.mp3?filename=summer-beach-ambience-6728.mp3">
+    <span class="emoji">🌻</span>
+    <h3>Summer</h3>
+  </div>
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2023/03/22/audio_3044e77a6f.mp3?filename=autumn-leaves-ambient-144623.mp3">
+    <span class="emoji">🍁</span>
+    <h3>Autumn</h3>
+  </div>
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2021/09/17/audio_893d4d3dbb.mp3?filename=winter-wind-ambient-6208.mp3">
+    <span class="emoji">☃️</span>
+    <h3>Winter</h3>
+  </div>
+  <div class="card" data-sound="https://cdn.pixabay.com/download/audio/2022/02/15/audio_4b5ce5d7f2.mp3?filename=rainbow-magic-ambient-109452.mp3">
+    <span class="emoji">🌈</span>
+    <h3>Rainbow</h3>
+  </div>
+</div>
+
+<script>
+// card click sound and animation
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const audio = new Audio(card.getAttribute('data-sound'));
+    audio.play();
+
+    // add bounce animation
+    card.classList.add('bounce');
+    setTimeout(() => card.classList.remove('bounce'), 600);
+  });
+});
+
+// background music control
+const bgMusic = new Audio("https://cdn.pixabay.com/download/audio/2023/05/12/audio_fbf0714a19.mp3?filename=happy-day-149101.mp3");
+bgMusic.loop = true;
+const musicBtn = document.getElementById('music-btn');
+let musicPlaying = false;
+
+musicBtn.addEventListener('click', () => {
+  if (!musicPlaying) {
+    bgMusic.play();
+    musicBtn.textContent = "⏸️ Pause Music";
+    musicPlaying = true;
+  } else {
+    bgMusic.pause();
+    musicBtn.textContent = "🎶 Play Background Music";
+    musicPlaying = false;
+  }
+});
+</script>
+
+</body>
+</html>
+

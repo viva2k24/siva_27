@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planets Learning 🌌</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:wght@700&display=swap');
+
+body {
+  font-family: 'Comic Neue', cursive;
+  margin: 0;
+  padding: 0;
+  background-color: #000022; /* dark space background */
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: starTwinkle linear infinite;
+}
+
+@keyframes starTwinkle {
+  0% { transform: translateY(0); opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { transform: translateY(1000px); opacity: 0.5; }
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 2rem;
+  background-color: #FFDE59; /* cheerful yellow */
+  color: #008080; /* teal */
+  font-size: 2.5rem;
+  font-family: 'Fredoka One', cursive;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Section */
+.section-title {
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+  font-size: 2rem;
+  color: #FFDE59;
+  text-shadow: 1px 1px #008080;
+}
+
+/* Grid */
+.planet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.planet-card {
+  background: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.5s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  padding: 15px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.planet-card.expanded {
+  grid-column: span 2;
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+.planet-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  transition: transform 0.5s;
+}
+
+.planet-card.expanded .planet-img {
+  transform: scale(1.5);
+}
+
+.planet-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: #008080;
+  margin-bottom: 5px;
+}
+
+.planet-info {
+  display: none;
+  font-size: 0.95rem;
+  color: #333;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.planet-card.expanded .planet-info {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<header>Planets Learning 🌌</header>
+<h2 class="section-title">Click a Planet to Learn!</h2>
+
+<div class="planet-grid">
+
+<div class="planet-card" onclick="expandCard(this,'Mercury')">
+  <img class="planet-img" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg" alt="Mercury">
+  <div class="planet-name">Mercury</div>
+  <div class="planet-info">Mercury is the smallest planet and closest to the Sun </div>
+</div>
+
+<div class="planet-card" onclick="expandCard(this,'Venus')">
+  <img class="planet-img" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg" alt="Venus">
+  <div class="planet-name">Venus</div>
+  <div class="planet-info">Venus is known as the hottest planet </div>
+</div>
+
+<div class="planet-card" onclick="expandCard(this,'Earth')">
+  <img class="planet-img" src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" alt="Earth">
+  <div class="planet-name">Earth</div>
+  <div class="planet-info">Earth is our home planet </div>
+</div>
+
+<div class="planet-card" onclick="expandCard(this,'Mars')">
+  <img class="planet-img" src="https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg" alt="Mars">
+  <div class="planet-name">Mars</div>
+  <div class="planet-info">Mars is called the Red Planet </div>
+</div>
+
+<div class="planet-card" onclick="expandCard(this,'Jupiter')">
+  <img class="planet-img" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg" alt="Jupiter">
+  <div class="planet-name">Jupiter</div>
+  <div class="planet-info">Jupiter is the largest planet </div>
+</div>
+
+<div class="planet-card" onclick="expandCard(this,'Saturn')">
+  <img class="planet-img" src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg" alt="Saturn">
+  <div class="planet-name">Saturn</div>
+  <div class="planet-info">Saturn is famous for its rings </div>
+</div>
+
+<div class="planet-card" onclick="expandCard(this,'Uranus')">
+  <img class="planet-img" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg" alt="Uranus">
+  <div class="planet-name">Uranus</div>
+  <div class="planet-info">Uranus spins on its side </div>
+</div>
+
+<div class="planet-card" onclick="expandCard(this,'Neptune')">
+  <img class="planet-img" src="https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg" alt="Neptune">
+  <div class="planet-name">Neptune</div>
+  <div class="planet-info">Neptune is very windy and blue </div>
+</div>
+
+<div class="planet-card" onclick="expandCard(this,'Pluto')">
+  <img class="planet-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxESEhMTExIVFRUVGBkXGBUXFxYVGBYTGBcYGRcYFxgeHSggGB8lGxcaITEhJSkrLjAuGiAzODMsNygtLisBCgoKDg0OGxAQGislHyUtLS0tNS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLf/AABEIAKgBLAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYDBAcCAf/EADgQAAIBAgQDBQYFAwUBAAAAAAABEQIhAwQxQRJRYQUGcYGRIjKhsdHwE0LB4fEHUoIjQ2JyohT/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAgMBBP/EACERAQEBAAIDAAIDAQAAAAAAAAABAhEhAxIxQVEiMmET/9oADAMBAAIRAxEAPwDioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGTAwaq6qaKKXVVU4VKUtvogMZnyWSxcarhwqKq3ypUx4vReZfu7v9OdKs0227/hU6L/tUve8FbqzoOT7MowKaaaMNUpaJKEibeFTPLlHZ39PM3iJOuqjCT5vifmlb4k9h/0ywaV7eNi1P/jw0LwvS/mdDak+Yblx6GWvK0njUVf09ykf7k/92auY/p9lvy14tP8AlS1PnT+p0SnATni28jQaSmN3CZN8tXPHHMM33DrU/h4qfSqlr4qfkV7tDsXMYM8eG4X5qfap84uvNI7S8OJnf5mDN5XT+S8+TrtOvE4aDpHbvdPCxJqS4Konip5/8lv93KJ2n2ZiYFUVqz0qWj+j6GzGzhpAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAesOh1NU0puqppJK7bbhJeYGbs/JYmNiU4eHTNVXolu29kjsfc3uzhZWlOOLEq9/Eau0/wAtK/LT0NXul3ZpyuGqamniYiVVdS6OOFPkp21d+SL5hZSEo8yuBly2U3nwNjFy0rSdjbwMPRctuhmxqPMjV5VEFj5aEYsDCcrh3nXw+pJ5jD5M85fDvOvU8ep/J6Zekb2lS7JTbf8AQ0K8LitEL47FhxUnsadGVvKsTZbVS9IuvKw9NfmYnhc5nRz5c/mTLwevT9TVzWEtemvlr8JN84vHLPWvwgczga+fPW1/kV7tLJU1J01JVJqGmW3ML5NrpGviQmYdr/T+T1YYbcr7b7JeBVa9DcJ7p8n9ftxh0vtTKKtOVKc2tvY592lkng1ul6ap9P2GolqgAkAAAAAAAAAAAAAAAAAAAAAAAAAAALx/TbsLjr/+itOFVwYa5uP9SpaaL2VG7e6KTRQ6mqaVLbSS5tuEvU7T2RlKcH8DCp93Bpji5tXrq8W3U3+wXic1O5PDjF2bbTs7U0vb10WhYcCrnH3sV3snEWLVZRq7X4UopVM+L9ILBlnMTOvwGqevaUyVNzZxY5GLA00/n6HvF0+19ozPy08ZHiqpU0wtWYsXFfE01CW6czdba7DFqhR0S9TK5rWV4Ubu7sZVTYxNp32FGJscxFbYa8PRrkaWM5/K/wC3VQ229lo5XTU2/wASJn9beZo14m3Nrpv73y9T1yT48/PaNzFLmYlr0VnMeTIrPU6+X398yXxKoTam3n/LInPNNWW0wtXoysfSojFSlWs9WVvvNkeOmyunbxX3BZMxhu6fKOn8ojM+uJNQ5V/jDKtc4c6QNjPYXDXV1v8AU1zJwAAAAAAAAAAAAAAAAAAAAAAAAAAEt3WwlVmsJuIofG/8dP8A1B0/Kuqr8T3U3TzejhxyTt5ycy7ruMWp/wDGPJuX8jo3ZWK3a6VlU1y5T1bM9Xt6fFP48p7svhow7N08Tb4k7wlLUckmtLSywdmYrtulZco+1qVWiK1QsN1brpxPeldbrXZEv2dmXTwJt3UtRe95mPBHZejUWx48UbTVpzfhfleUYaM7SoUy25UufRvUiqs9Q60nUlbnDVKpqV76J6u3vIyVVpRTF1K6q2yvP0DPhkxar1Nu173un4Lb5h410uJO91eeJfcMjcw/YSTben+Tbcdbv71MNGO3U3Okq6m7U6tKIh63uOOVJd4jppunr6ToYKseJZ5xfahJ+L2U7tcrHmrKTpVMR7SmHM3Wyh29SNSck5Hmm6r1Nry10Xz+BH4uJLd+qmNfHRbs8YirpTnwdrq0tt6ehoV47mdlTOic7RL0V58judWO+jazONDd7T8YcffU0cwuKOceV/5gwrHdTctqzvbf9dr6GWite0tbtL1cGvsn1Rmaw1N/Hfy35EZmKIqnmp8nr9SyY2CnTU6norbO+3wRGZnDpqoSpblKmddJa/VFZ7Trpz7vNgcNc9Y8o+pDFn730RTSvjzvp6FYO7+soAAh0AAAAAAAAAAAAAAAAAAAAAAABLd2WvxXMw1FtplL4tLzL33ermrgetqfPR/E5z2ZiRW7pSolza6c25a+Ra+7mZdPFVPSXzd/0Mtf2evx/wBF2y9OyahTeWpScKPHkMtnXU3XS4qe/FDVlTbaHG035b+Mpj0N/iVNOlrezTe/W6foRay7rqdU+DWkbczl5nxWbL9S+SztdTbqbmWpq4FEpqy4r22hTJM1ZqKKaXXMbN3S+4Kbllw11S3KU68p2fl6nrG7Qqpai7ejbdnFoajdtTHoJrrt255vSyZzON2pnVTG8qq7ja2nQ3MPMp+yk4cJ7ttfc7eRXeycRuqlS54auFy92pnWbKfP0s3YWUqdVVb0iE95lTtD+0c1pzjiN/KYFlU5q96zu2nKmY10RvulJ+tvHmjxRTw6aaJX+odRn3XOGPMYaqpdOk7rWefqVzP9nOmpum9Lu1yn5zf0LDXcxYuHqndNFZvbnalVYLWI+VPLzb+epJYWBC4rKWkl1jkbeUyDaVVUp8nExOjMmdwLawkrffmzacoupy0cWaqKqVyh+T+JCV1JLEhpuy8lG3mycqofC6W2nMynp9wVnMNN4lSsqq/ef9urj4G+Pjz6qpd78Tilcm/QrROd58ZOrq/k62/oQZO/rkAAS6AAAAAAAAAAAAAAAAAAAAAAAA94NUVL09SbyWaqpTS0bSdN990t9N04cdCBN/CfEk198zPcenwX8LRhZ91UuiWuJWl2U8vP5Ejke0m04TTp5+HL7RUcJvRuN29YXRfepuVZyaqXS9FtZ31RnW/ryu2Eqa8OaXTPk9rLr+5CV1VN1NcUNwrQ1PE6baqI5beZs9kOuuj/AE6m1RapQuLhe8bpS2v+r6J+MTGpbaSipOadHKTh2UvSfTYq5liM25vCayuFXVmsHCsuChJck/aqqcc4TXqXfJ0VYSVHvU+0+LSL2piXMzr0fQp3ZdODhpZlqp1YdKra4l7dDTXEkp0c/cExkO8H49VCwqZp/wBx/mpmeF63XsxputETrPZbzFhpqlnrEZr4NVvvc9Ooj/Dl6k+N3MdVZjrxeReco1XlNwk7N8o/g1MauVCand8p3+Blx8S2z+5XyIrMY7oq92z/ALY35rxk9EnbzWsOZcJXdudpdm5XmVXPYnDTVT48la+v7kxnMbWGle+lypduZrhTU6/JfsbXqM/tVjtjMceJ4GmHVxN1PdgytVAAHHQAAAAAAAAAAAAAAAAAAAAAAAAzZbEhxz+ZhByzlWdet5bx6VvzL/16OxjwMWVG8X6rmfYMntllnMbNGarol01NOOFx/a9V4dDYyefqon2mpV3Lbl3nr9J53jkj7R8vkHKs/ZPbleDVX/qU1KpQ1V7VLTi1um6mOhO91sPhp/GwsXidMKqj3I34aqm4ve+ihlFeM1TaIhK6bTqvdTup8JbsSXc7tj8DMKXw4eIuCtTbpU55O/qd+uXp1zL9r4T4U6lxV3STmV0fI3Xiop2Fm6sSquvBrimjiVVLpcqpLR0+nx8CRy3a1lTW3xxLilpeK3j11SmR6/pnamcTGNSrMQ9TXrxzVxca5eMM966bmNmfLrNiGzuaqVUx5r0I/tHvDh4cp67pX+JX893qn3KPU254/LH11+m9272vTRKbu9ld7ft6FI7Qz9WI3snt0MeczNVdTqqc1PVmGlE3XJJw+gAl0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAfaammmrNG9h4irWyqX5efWn6GgDlzyvHkuUhVQ0esNQquttFzT/Q18LOPSq/XfzX6lgyzw68L2XTMXlTdc9yPWt/8AtlCKn71Piw3tqWPL9mUyqrNNPktVo1ubGH2YldN2vN0520fwO+mnL5ctju9n8zh++6q6HCpvxVpb21iJd72UE8qfaddls1bxvbW/wRF4FNNF6YTe97z1uz5jZ91JJNcm3F/Rmuc9dsdb5vSVqzNtZNfFzDIh59Up39W35zcjM729SlZz8vUv4zYO1apdSd3OvUgc1iJW1Puaz1VbsaqRjw0uunymk9AHUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH1OLqz5qx8AG7g9qY1MRVPibdPeHFjT4/sQ4O80TNHeGtbP9PmYsft7Fq2XnD/giwOaMuLmcSrWp+RhjnfxPoHIAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9k=" alt="Pluto">
+  <div class="planet-name">Pluto</div>
+  <div class="planet-info">Pluto is a dwarf planet </div>
+</div>
+
+</div>
+
+<script>
+// Create background stars
+for(let i=0;i<80;i++){
+  const star = document.createElement('div');
+  star.className='star';
+  star.style.width=Math.random()*3+1+'px';
+  star.style.height=star.style.width;
+  star.style.left=Math.random()*100+'vw';
+  star.style.top=Math.random()*100+'vh';
+  star.style.animationDuration=(Math.random()*15+5)+'s';
+  document.body.appendChild(star);
+}
+
+// Expand card function
+function expandCard(card, planet) {
+  if(card.classList.contains('expanded')) return;
+
+  const info = card.querySelector('.planet-info').innerText;
+  const speech = new SpeechSynthesisUtterance(`${planet}. ${info}`);
+  speech.rate = 0.9;
+  speechSynthesis.speak(speech);
+
+  card.classList.add('expanded');
+
+  setTimeout(()=> {
+    card.classList.remove('expanded');
+  }, 4000);
+}
+</script>
+
+</body>
+</html>

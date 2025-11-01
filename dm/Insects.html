@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insects & Bugs 🐞🐝🦋</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background: linear-gradient(135deg, #fff176, #26c6da); /* yellow to teal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px 0;
+  }
+
+  h1 {
+    font-size: 48px;
+    color: #ff6f61;
+    text-shadow: 2px 2px #fff;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 680px;
+    justify-content: space-between;
+  }
+
+  .card {
+    width: 180px;
+    height: 180px;
+    margin: 15px 0;
+    background: #ffffff; /* teal card */
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    position: relative;
+  }
+
+  .card:hover {
+    transform: translateY(-10px) rotate(-3deg);
+    background: #ffeb3b; /* hover yellow */
+  }
+
+  .card img {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s;
+  }
+
+  .card p {
+    margin: 5px 0 0 0;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px #000;
+  }
+
+  @keyframes flap {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(15deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  .flap {
+    animation: flap 0.6s ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<h1>🐞 Insects & Bugs 🐝</h1>
+
+<!-- Background music -->
+<audio id="bgMusic" loop autoplay>
+  <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+</audio>
+
+<div class="container">
+  <div class="card" data-sound="butterfly">
+    <img src="https://img.icons8.com/color/96/000000/butterfly.png" alt="Butterfly">
+    <p>Butterfly</p>
+  </div>
+
+  <div class="card" data-sound="bee">
+    <img src="https://img.icons8.com/color/96/000000/bee.png" alt="Bee">
+    <p>Bee</p>
+  </div>
+
+  <div class="card" data-sound="ant">
+    <img src="https://img.icons8.com/color/96/000000/ant.png" alt="Ant">
+    <p>Ant</p>
+  </div>
+
+  <div class="card" data-sound="ladybug">
+    <img src="data:image/png;base64,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" alt="Ladybug">
+    <p>Ladybug</p>
+  </div>
+
+  <div class="card" data-sound="spider">
+    <img src="https://img.icons8.com/color/96/000000/spider.png" alt="Spider">
+    <p>Spider</p>
+  </div>
+
+  <div class="card" data-sound="grasshopper">
+    <img src="https://img.icons8.com/color/96/000000/grasshopper.png" alt="Grasshopper">
+    <p>Grasshopper</p>
+  </div>
+
+  <div class="card" data-sound="dragonfly">
+    <img src="https://img.icons8.com/color/96/000000/dragonfly.png" alt="Dragonfly">
+    <p>Dragonfly</p>
+  </div>
+
+  <div class="card" data-sound="mosquito">
+    <img src="https://img.icons8.com/color/96/000000/mosquito.png" alt="Mosquito">
+    <p>Mosquito</p>
+  </div>
+</div>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const bgMusic = document.getElementById('bgMusic');
+
+  // Create sounds as Audio objects
+  const sounds = {
+    butterfly: new Audio('https://www.soundjay.com/nature/butterfly-1.mp3'),
+    bee: new Audio('https://www.soundjay.com/nature/bee-1.mp3'),
+    ant: new Audio('https://www.soundjay.com/nature/ant-1.mp3'),
+    ladybug: new Audio('https://www.soundjay.com/nature/ladybug-1.mp3'),
+    spider: new Audio('https://www.soundjay.com/nature/spider-1.mp3'),
+    grasshopper: new Audio('https://www.soundjay.com/nature/grasshopper-1.mp3'),
+    dragonfly: new Audio('https://www.soundjay.com/nature/dragonfly-1.mp3'),
+    mosquito: new Audio('https://www.soundjay.com/nature/mosquito-1.mp3')
+  };
+
+  document.body.addEventListener('click', () => {
+    if(bgMusic.paused) bgMusic.play();
+  }, { once: true });
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const soundName = card.getAttribute('data-sound');
+      sounds[soundName].currentTime = 0;
+      sounds[soundName].play();
+
+      const img = card.querySelector('img');
+      img.classList.add('flap');
+
+      // Random small movement
+      const container = document.querySelector('.container');
+      const maxX = container.offsetWidth - img.parentElement.offsetWidth;
+      const maxY = container.offsetHeight - img.parentElement.offsetHeight;
+      const randomX = Math.floor(Math.random() * maxX / 2) - 50;
+      const randomY = Math.floor(Math.random() * maxY / 2) - 50;
+      img.parentElement.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+      setTimeout(() => {
+        img.classList.remove('flap');
+        img.parentElement.style.transform = 'translate(0,0)';
+      }, 800);
+    });
+  });
+</script>
+
+</body>
+</html>
